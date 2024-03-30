@@ -22,7 +22,7 @@ class ListTileSelectExample extends StatefulWidget {
 
 class ListTileSelectExampleState extends State<ListTileSelectExample> {
   bool isSelectionMode = false;
-  final int listLength = 30;
+  final int listLength = 7;
   late List<bool> _selected;
   bool _selectAll = false;
   bool _isGridMode = false;
@@ -203,24 +203,28 @@ class _ListBuilderState extends State<ListBuilder> {
     }
   }
 
-  String _getItemText(int index) {
-    switch (index) {
-      case 1:
-        return 'một';
-      case 2:
-        return 'hai';
-      case 3:
-        return '3';
-      case 4:
-        return '5';
-      case 5:
-        return 'sau';
-      case 6:
-        return 'bay';
-      default:
-        return index.toString();
-    }
+
+String _getItemText(int index) {
+  switch (index) {
+    case 0:
+      return '007\n Tên thiết bị: iphone 15 ProMax\n Hệ Điều Hành iOS 17\n Chip: Apple A17 Pro 6 nhân\n RAM: 8GB\n Dung lượng lưu trữ: 256GB\n Hãng: iPhone(Apple)';
+    case 1:
+      return '008\n Tên thiết bị: Laptop Apple MacBook Air 13\n Hệ Điều Hành: Android 13\n Card màn hình: Card tích hợp, 8 nhân GPU\n RAM: 16GB\n Ổ cứng: 256 GB SSD';
+    case 2:
+      return '009\n Tên thiết bị: Samsung Galaxy Z Fold5\n Hệ Điều Hành: iOS 17\n Chip: Snapdragon 8 Gen 2 for Galaxy\n RAM: 12 GB\n Dung lượng: 512GB\n Hãng: SamSung';
+    case 3:
+      return '0010\n Tên thiết bị: OPPO A78\n Hệ Điều Hành Android 13\n Chip: Snapdragon 680\n RAM: 8GB\n Dung lượng: 256GB\n Hãng: Oppo';
+    case 4:
+      return '0011\n Tên thiết bị: Porco\n Hệ Điều Hành: Android 13\n Chip: MediaTek Helio G36 8 nhân\n RAM: 3GB\n Dung lượng: 64GB\n Hãng: Xiaomi';
+    case 5:
+      return '0012\n Tên thiết bị: Realme C67\n Hệ Điều Hành Android 14\n Chip: Snapdragon 685 8 nhân\n RAM: 8GB\n Dung lượng: 256GB\n Hãng: Realme';
+    case 6:
+      return '0013\n Tên thiết bị: Lenovo Tab M8\n Hệ Điều Hành Android 12 (Go Edition)\n Chip: MediaTek Helio A22\n RAM: 3GB\n Dung lượng: 32GB\n Hãng: Lenovo';
+    default:
+      return index.toString();
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -243,7 +247,11 @@ class _ListBuilderState extends State<ListBuilder> {
                   onChanged: (bool? x) => _toggle(index),
                 )
               : const SizedBox.shrink(),
-          title: Text('item ${_getItemText(index)}'),
+          title: Column(
+            children: [
+              Text ('\n id: ${_getItemText(index)}'),
+            ],
+          ),
         );
       },
     );
