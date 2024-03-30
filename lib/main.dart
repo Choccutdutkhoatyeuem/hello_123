@@ -42,7 +42,7 @@ class ListTileSelectExampleState extends State<ListTileSelectExample> {
     _selected.clear();
     super.dispose();
   }
-
+final List<String> _list = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
