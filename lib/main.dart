@@ -42,7 +42,7 @@ class ListTileSelectExampleState extends State<ListTileSelectExample> {
     _selected.clear();
     super.dispose();
   }
-final List<String> _list = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+final List<String>_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -247,11 +247,10 @@ String _getItemText(int index) {
                   onChanged: (bool? x) => _toggle(index),
                 )
               : const SizedBox.shrink(),
-          title: Column(
-            children: [
-              Text ('\n id: ${_getItemText(index)}'),
-            ],
-          ),
+
+             title: Text ('\n id: ${_getItemText(index)}'),
+
+      
         );
       },
     );
