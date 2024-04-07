@@ -22,10 +22,10 @@ class ListTileSelectExample extends StatefulWidget {
 
 class ListTileSelectExampleState extends State<ListTileSelectExample> {
   bool isSelectionMode = false;
-  final int listLength = 7;
   late List<bool> _selected;
   bool _selectAll = false;
   bool _isGridMode = false;
+
 
   @override
   void initState() {
@@ -34,7 +34,7 @@ class ListTileSelectExampleState extends State<ListTileSelectExample> {
   }
 
   void initializeSelection() {
-    _selected = List<bool>.generate(listLength, (_) => false);
+    _selected = List<bool>.generate(_list.length, (_) => false);
   }
 
   @override
@@ -42,7 +42,7 @@ class ListTileSelectExampleState extends State<ListTileSelectExample> {
     _selected.clear();
     super.dispose();
   }
-final List<String>_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+final List<String> _list = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +92,7 @@ final List<String>_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
               onPressed: () {
                 _selectAll = !_selectAll;
                 setState(() {
-                  _selected = List<bool>.generate(listLength, (_) => _selectAll);
+                  _selected = List<bool>.generate(_list.length, (_) => _selectAll);
                 });
               },
             ),
@@ -202,34 +202,11 @@ class _ListBuilderState extends State<ListBuilder> {
       });
     }
   }
-
-
-String _getItemText(int index) {
-  switch (index) {
-    case 0:
-      return '007\n Tên thiết bị: iphone 15 ProMax\n Hệ Điều Hành iOS 17\n Chip: Apple A17 Pro 6 nhân\n RAM: 8GB\n Dung lượng lưu trữ: 256GB\n Hãng: iPhone(Apple)';
-    case 1:
-      return '008\n Tên thiết bị: Laptop Apple MacBook Air 13\n Hệ Điều Hành: Android 13\n Card màn hình: Card tích hợp, 8 nhân GPU\n RAM: 16GB\n Ổ cứng: 256 GB SSD';
-    case 2:
-      return '009\n Tên thiết bị: Samsung Galaxy Z Fold5\n Hệ Điều Hành: iOS 17\n Chip: Snapdragon 8 Gen 2 for Galaxy\n RAM: 12 GB\n Dung lượng: 512GB\n Hãng: SamSung';
-    case 3:
-      return '0010\n Tên thiết bị: OPPO A78\n Hệ Điều Hành Android 13\n Chip: Snapdragon 680\n RAM: 8GB\n Dung lượng: 256GB\n Hãng: Oppo';
-    case 4:
-      return '0011\n Tên thiết bị: Porco\n Hệ Điều Hành: Android 13\n Chip: MediaTek Helio G36 8 nhân\n RAM: 3GB\n Dung lượng: 64GB\n Hãng: Xiaomi';
-    case 5:
-      return '0012\n Tên thiết bị: Realme C67\n Hệ Điều Hành Android 14\n Chip: Snapdragon 685 8 nhân\n RAM: 8GB\n Dung lượng: 256GB\n Hãng: Realme';
-    case 6:
-      return '0013\n Tên thiết bị: Lenovo Tab M8\n Hệ Điều Hành Android 12 (Go Edition)\n Chip: MediaTek Helio A22\n RAM: 3GB\n Dung lượng: 32GB\n Hãng: Lenovo';
-    default:
-      return index.toString();
-  }
-}
-
-
+final List<String> _list = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: widget.selectedList.length,
+      itemCount: _list.length,
       itemBuilder: (_, int index) {
         return ListTile(
           onTap: () => _toggle(index),
@@ -247,10 +224,7 @@ String _getItemText(int index) {
                   onChanged: (bool? x) => _toggle(index),
                 )
               : const SizedBox.shrink(),
-
-             title: Text ('\n id: ${_getItemText(index)}'),
-
-      
+          title: Text('list ${_list[index]}'),
         );
       },
     );
